@@ -1,0 +1,16 @@
+# In a real project you should comment out the below files to ignore them.
+
+# virtual environment
+.venv/
+
+# environment variables
+# .env
+
+# database
+# project/db.sqlite3
+
+# username and passwords of test users
+# user-accounts.json
+
+# .pyc files
+project/**/__pycache__

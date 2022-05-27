@@ -1,0 +1,26 @@
+{
+    "administrators":[
+        {
+            "username": "admin",
+            "password": "websiteadmin"
+        }
+    ],
+    "regular-users":[
+        {
+            "username": "hosein-rahnama",
+            "password": "websiteuser"
+        },
+        {
+            "username": "hesam-rahnama",
+            "password": "websiteuser"
+        },
+        {
+            "username": "manoochehr-rahnama",
+            "password": "websiteuser"
+        },
+        {
+            "username": "mehri-sohrabi",
+            "password": "websiteuser"
+        }
+    ]
+}
