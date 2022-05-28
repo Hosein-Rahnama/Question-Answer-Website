@@ -2,7 +2,7 @@
 - [x] Setup initial settings.
 - [x] Create blog app.
 - [x] Create question and answer models.
-- [ ] Create `base.html` and `index.html` templates.
+- [x] Create `base.html` and `index.html` templates.
 - [ ] Create style for the `base.html`.
 - [ ] Create a detailed view for questions.
 - [ ] Create navigation bar.
