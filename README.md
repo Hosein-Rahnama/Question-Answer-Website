@@ -1,6 +1,6 @@
 # TODO List
 - [x] Setup initial settings.
-- [ ] Create blog app.
+- [x] Create blog app.
 - [ ] Create question and answer models.
 - [ ] Create `base.html` and `index.html` templates.
 - [ ] Create style for the `base.html`.

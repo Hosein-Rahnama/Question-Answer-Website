@@ -1,0 +1,5 @@
+from django.http import HttpResponse
+
+def index(request):
+    message = "Hello World!"
+    return HttpResponse(message)
