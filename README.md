@@ -3,7 +3,7 @@
 - [x] Create blog app.
 - [x] Create question and answer models.
 - [x] Create `base.html` and `index.html` templates.
-- [ ] Create style for the `base.html`.
+- [x] Create styles.
 - [ ] Create a detailed view for questions.
 - [ ] Create navigation bar.
 - [ ] Add user registration.

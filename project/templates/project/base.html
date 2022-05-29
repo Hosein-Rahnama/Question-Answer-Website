@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +10,9 @@
 
     <meta name="description" content="A platform for talking about programming.">
     <meta name="keywords", content="C, C++, C#, Go, Python, MQL, HTML, CSS, JavaScript">
+
+    <link rel="stylesheet" type="text/css" href="{% static 'project/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 </head>
 <body>
     <header></header>
@@ -18,7 +23,7 @@
         {% block content %}
         {% endblock content %}
     </main>
-    
+
     <footer></footer>
 </body>
 </html>

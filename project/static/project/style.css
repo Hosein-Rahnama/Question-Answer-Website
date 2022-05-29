@@ -1,0 +1,15 @@
+/* CSS Reset */
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-image: url(./images/background.jpg);
+    background-repeat: repeat;
+    background-size: 20%;
+    font-family: 'Cambria', 'Times New Roman', 'Arial';
+    line-height: 30px;
+    padding: 25px;
+    margin: 100px;
+}

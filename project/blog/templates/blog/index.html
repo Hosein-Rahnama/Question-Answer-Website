@@ -1,20 +1,21 @@
 {% extends "project/base.html" %}
 {% block content %}
     {% if questions_list %}
-        <ul>
+        <ul class="questions-list">
             {% for question in questions_list %}
                 {% with answers=question.answer_set %}
-                    <li>
-                        <h2>{{ question.title }}</h2>
-                        <p>asked by <strong>{{ question.author }}</strong> on {{ question.published|date:"F d, Y - H:i"}}</p>
-                        <p>
+                    <li class="question-card">
+                        <h2 class="question-title">{{ question.title }}</h2>
+                        <p class="question-preview">{{ question.body }}</p>
+                        <p class="question-info">asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y - H:i"}}</p>
+                        <p class="question-info">
                             {% if answers.count %}
                                 has {{ answers.count }} answer{{ answers.count|pluralize }} given by:
                                 {% for answer in answers.all %}
                                     {% if forloop.counter == answers.all.count %}
-                                        <em>{{ answer.author.username }}</em>
+                                        <span class="answer-author">{{ answer.author.username }}</span>
                                     {% else %}
-                                        <em>{{ answer.author.username }}</em>,
+                                        <span class="answer-author">{{ answer.author.username }}</span>,
                                     {% endif %}
                                 {% endfor %}
                             {% else %}
@@ -22,11 +23,10 @@
                             {% endif %}
                         </p>
                     </li>
-                    <hr>
                 {% endwith %}
             {% endfor %}
         </ul>
     {% else %}
-        <p><strong>No questions are available.</strong></p>
+        <p class="empty-questions-list">No questions are available.</p>
     {% endif %}
 {% endblock content %}

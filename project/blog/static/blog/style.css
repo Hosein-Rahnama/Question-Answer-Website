@@ -1,0 +1,40 @@
+.empty-questions-list {
+    font-weight: bold;
+}
+
+.questions-list {
+    list-style-type: none;
+    margin: 0em auto;
+    width: 75%;
+}
+
+.question-card {
+    background-color: whitesmoke;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1em;
+    padding: 0.5em 1em;
+}
+
+.question-title {
+    margin-bottom: 0.8em;
+}
+
+.question-preview {
+    line-height: 1.2em;
+    margin-bottom: 1em;
+    white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.question-info {
+    line-height: 1.2em;
+}
+
+.question-author {
+    font-weight: bold;
+}
+
+.answer-author {
+    font-style: italic;
+}
