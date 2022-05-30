@@ -1,25 +1,25 @@
+/* question classes */
 .empty-questions-list {
     font-weight: bold;
 }
 
 .questions-list {
     list-style-type: none;
-    margin: 0em auto;
-    width: 75%;
+    margin: 0em 2em;
 }
 
 .question-card {
-    background-color: whitesmoke;
     border-bottom-style: solid;
     border-bottom-width: 0.1em;
     padding: 0.5em 1em;
+    margin-bottom: 0.5em;
 }
 
 .question-title {
     margin-bottom: 0.8em;
 }
 
-.question-preview {
+.question-body-preview {
     line-height: 1.2em;
     margin-bottom: 1em;
     white-space: nowrap; 
@@ -27,14 +27,49 @@
     text-overflow: ellipsis;
 }
 
+.question-body {
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
 .question-info {
-    line-height: 1.2em;
+    line-height: 1.3em;
+    font-size: small;
 }
 
 .question-author {
     font-weight: bold;
 }
 
+/* Answer classes */
+.answers-list {
+    list-style-type: none;
+    margin: 0em 2em;
+}
+
+.answer-card {
+    background-color: lightyellow;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1em;
+    padding: 0.5em 1em;
+    margin-bottom: 0.5em;
+}
+
+.answer-body {
+    margin-bottom: 1em;
+    line-height: 1.5em;
+}
+
 .answer-author {
     font-style: italic;
+}
+
+.answers-header {
+    margin-top: 0.5em;
+    padding: 0em 0.7em;
+}
+
+.answer-info {
+    line-height: 1.3em;
+    font-size: small;
 }

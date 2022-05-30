@@ -1,0 +1,25 @@
+{% extends "project/base.html" %}
+{% block content %}
+    <ul class="questions-list">
+        <li class="question-card">
+            <h2 class="question-title">{{ question.title }}</h2>
+            <p class="question-body">{{ question.body }}</p>
+            <p class="question-info">asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</p>
+        </li>
+    </ul>
+    <ul class="answers-list">
+        <h3 class="answers-header">
+            {% if answers.count %}
+                {{ answers.count }} Answer{{ answers.count|pluralize }}
+            {% else %}
+                0 Answers
+            {% endif %}
+        </h3>
+        {% for answer in answers %}
+            <li class="answer-card">
+                <p class="answer-body">{{ answer.body }}</p>
+                <p class="answer-info"> answered by <span class="answer-author">{{ answer.author.username }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }} </p>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

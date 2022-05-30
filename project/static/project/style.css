@@ -2,14 +2,38 @@
 * {
     margin: 0px;
     padding: 0px;
+    box-sizing: border-box;
 }
 
+/* Fonts */
+@font-face {
+    font-family: Quicksand;
+    src: url(./fonts/Quicksand-Regular.ttf);
+}
+
+@font-face {
+    font-family: Quicksand;
+    src: url(./fonts/Quicksand-Bold.ttf);
+    font-weight: bold;
+}
+
+/* General Styles */
 body {
     background-image: url(./images/background.jpg);
     background-repeat: repeat;
-    background-size: 20%;
-    font-family: 'Cambria', 'Times New Roman', 'Arial';
+    background-size: 25%;
+    font-family: 'Quicksand', 'Cambria', 'Times New Roman', 'Arial';
     line-height: 30px;
     padding: 25px;
     margin: 100px;
+}
+
+main {
+    background-color: whitesmoke;
+    margin: 1px;
+    padding: 1px;
+}
+
+a {
+    text-decoration: none;   
 }
