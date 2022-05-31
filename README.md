@@ -5,10 +5,8 @@
 - [x] Create `base.html` and `index.html` templates.
 - [x] Create styles.
 - [X] Create a detailed view for questions.
-- [ ] Create navigation bar.
-- [ ] Add user registration.
+- [x] Create navigation bar.
 - [ ] Create login and logout system.
 - [ ] Create and update user profile.
 - [ ] Create, update and delete posts.
 - [ ] Add pagination.
-- [ ] Reset password.

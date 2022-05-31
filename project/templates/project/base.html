@@ -15,15 +15,21 @@
     <link rel="stylesheet" type="text/css" href="{% static 'blog/style.css' %}">
 </head>
 <body>
-    <header></header>
-
-    <nav></nav>
-
+    <nav class="nav-bar">
+        <ul>
+            <div class="nav-bar-left">
+                <li><a href="{% url 'blog:index' %}">Home</a></li>
+                <li><a href="#">About Us</a></li>
+            </div>
+            <div class="nav-bar-right">
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </div>               
+        </ul>
+    </nav>
     <main>
         {% block content %}
         {% endblock content %}
     </main>
-
-    <footer></footer>
 </body>
 </html>

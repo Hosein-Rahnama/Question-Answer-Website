@@ -5,7 +5,7 @@
             {% for question in questions_list %}
                 {% with answers=question.answer_set.all %}
                     <li class="question-card">
-                        <a href="{% url 'blog:detail' question.id %}"><h2 class="question-title">{{ question.title }}</h2></a>
+                        <h2 class="question-title"><a href="{% url 'blog:detail' question.id %}">{{ question.title }}</a></h2>
                         <p class="question-body-preview">{{ question.body }}</p>
                         <div class="question-info">
                             <p>asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</p>

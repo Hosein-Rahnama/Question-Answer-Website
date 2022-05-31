@@ -21,6 +21,14 @@
         {
             "username": "mehri-sohrabi",
             "password": "websiteuser"
+        },
+        {
+            "username": "sara-sohrabi",
+            "password": "websiteuser"
+        },
+        {
+            "username": "nazanin-sohrabi",
+            "password": "website-user"
         }
     ]
 }

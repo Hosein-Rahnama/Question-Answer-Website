@@ -1,4 +1,4 @@
-/* question classes */
+/* Question styles */
 .empty-questions-list {
     font-weight: bold;
 }
@@ -41,7 +41,7 @@
     font-weight: bold;
 }
 
-/* Answer classes */
+/* Answer styles */
 .answers-list {
     list-style-type: none;
     margin: 0em 2em;
