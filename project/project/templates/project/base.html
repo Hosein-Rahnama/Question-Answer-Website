@@ -23,8 +23,12 @@
                 <li><a href="#">About Us</a></li>
             </div>
             <div class="nav-bar-right">
-                <li><a href="#">Login</a></li>
-                <li><a href="{% url 'user:register' %}">Register</a></li>
+                {% if user.is_authenticated %}
+                    <li><a href="{% url 'user:logout' %}">Logout</a></li>           
+                {% else %}
+                    <li><a href="{% url 'user:login' %}">Login</a></li>
+                    <li><a href="{% url 'user:register' %}">Register</a></li>
+                {% endif %}
             </div>               
         </ul>
     </nav>

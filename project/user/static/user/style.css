@@ -1,30 +1,30 @@
-.register-form {
+.form {
     width: 50%;
     margin: 0em 2em;
 }
 
-.register-form h2 {
+.form h2 {
     margin-bottom: 1em;
 }
 
-.register-form ul {
+.form ul {
     list-style-type: none;
 }
 
-.register-form > ul li {
+.form > ul li {
     margin-bottom: 1em;
 }
 
-.register-form ul li label {
+.form ul li label {
     display: block;
 }
 
-.register-form ul li label::after {
+.form ul li label::after {
     content: " *";
     color: red;
 }
 
-.register-form ul li input {
+.form ul li input {
     display: block;
     width: 100%;
     height: 2.25em;
@@ -33,13 +33,13 @@
     text-indent: 1em;
 }
 
-.register-form ul li input::placeholder {
+.form ul li input::placeholder {
     color: grey;
     opacity: 0.5;
 }
 
-.register-form input[type="submit"] {
-    padding: 0.25em 1em;
+.form input[type="submit"] {
+    padding: 0.5em 1.25em;
     margin-top: 1em;
     font-size: 0.9rem;
     border-style: hidden;
@@ -49,24 +49,24 @@
     
 }
 
-.register-form input[type="submit"]:hover {
+.form input[type="submit"]:hover {
     color: blue;
     background-color: darkgray;
     cursor: pointer;
 }
 
-.register-form .help-text {
+.form .help-text {
     line-height: 1em;
     font-size: small;
     margin-top: 0.75em;
     color: grey;
 }
 
-.register-form .help-text ul li {
+.form .help-text ul li {
     margin: 0.5em 0em;
 }
 
-.register-form .errorlist {
+.form .errorlist {
     line-height: 1em;
     font-size: small;
     margin-top: 0.75em;
@@ -74,9 +74,9 @@
     color: red;
 }
 
-.register-form .register-messages .error {
+.form .messages .error {
     list-style-type: none;
-    color: indianred;
+    color: red;
     background-color: gainsboro;
     border-style: hidden;
     border-radius: 0.5em;
@@ -86,7 +86,7 @@
     font-weight: 900;
 }
 
-.register-form .register-messages .success {
+.form .messages .success {
     list-style-type: none;
     color: mediumseagreen;
     background-color: gainsboro;

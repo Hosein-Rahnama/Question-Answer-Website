@@ -1,4 +1,4 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 
 
@@ -9,3 +9,7 @@ class RegisterForm(UserCreationForm):
         help_texts = {
             'username': 'Your username has a maxium of 150 characters and contains letters, digits and @ . + - _ only.'
         }
+
+
+class LoginForm(AuthenticationForm):
+    pass

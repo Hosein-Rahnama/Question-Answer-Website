@@ -2,15 +2,13 @@
 {% load form_tags_filters %}
 
 {% block content %}
-    <form class="register-form" action="{% url 'user:register' %}" method="post">
+    <form class="form" action="{% url 'user:register' %}" method="post">
         {% csrf_token %}
         <h2>Create an Account</h2>
         {% if messages %}
-            <ul class="register-messages">
+            <ul class="messages">
                 {% for message in messages %}
-                    <li class="{{ message.tags }}">
-                        {{ message }}
-                    </li>
+                    <li class="{{ message.tags }}">{{ message }}</li>
                 {% endfor %}
             </ul>
         {% endif %}
@@ -43,6 +41,6 @@
                 {% endwith %}
             {% endfor %}
         </ul>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Sign Up">
     </form>
 {% endblock content %}
