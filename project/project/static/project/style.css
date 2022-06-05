@@ -42,6 +42,11 @@ a:hover {
     color: blue;
 }
 
+input, textarea {
+    font-family: inherit;
+    font-size: 0.85rem
+}
+
 /* Navigation Bar */
 .nav-bar {
     background-color: lightgrey;

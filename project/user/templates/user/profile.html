@@ -1,0 +1,70 @@
+{% extends "project/base.html" %}
+{% load form_tags_filters %}
+
+{% block content %}
+    <div class="profile">
+        <h2>{{ user.username }} Profile</h2>
+        <img src="{{ user.profile.image.url }}">
+        {% if user.profile.biography %}
+            <h3>Biography</h3>
+            <p>{{ user.profile.biography }}</p>
+        {% endif %}
+    </div>
+    <form class="form" action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h2>Update Your Profile</h2>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <ul>
+            {% for field in user_update_form %}
+                {% with field=field|label_suffix:'' %}
+                    <li>
+                        {% if field.id_for_label == 'id_username' %}
+                            {{ field.label_tag }}
+                            {{ field|placeholder:'Enter your new username' }}
+                        {% elif field.id_for_label == 'id_email' %}
+                            {% with field=field|label:'Email' %}
+                                {{ field.label_tag }}
+                                {{ field|placeholder:'example@domain.com' }}
+                            {% endwith %}
+                        {% endif %}
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                            <div class="help-text">{{ field.help_text }}</div>
+                        {% endif %}
+                    </li>
+                {% endwith %}
+            {% endfor %}
+            {% for field in profile_update_form %}
+                {% with field=field|label_suffix:'' %}
+                    <li>
+                        {% if field.id_for_label == 'id_image' %}
+                            {% with field=field|label:'Profile Image' %}
+                                {{ field.label_tag }}
+                                {{ field }}
+                            {% endwith %}
+                        {% elif field.id_for_label == 'id_biography' %}
+                            {{ field.label_tag }}
+                            {{ field|placeholder:'Add a bigoraphy to your profile' }}
+                        {% endif %}
+                        {{ field.errors }}
+                        {% if field.help_text %}
+                            <div class="help-text">{{ field.help_text }}</div>
+                        {% endif %}
+                    </li>
+                {% endwith %}
+            {% endfor %}
+            {% if request.GET.next %}
+                <li>
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                </li>
+            {% endif %}
+        </ul>
+        <input type="submit" value="Update">
+    </form>
+{% endblock content %}

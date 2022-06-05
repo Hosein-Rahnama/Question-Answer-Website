@@ -30,6 +30,11 @@
                     </li>
                 {% endwith %}
             {% endfor %}
+            {% if request.GET.next %}
+                <li>
+                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                </li>
+            {% endif %}
         </ul>
         <input type="submit" value="Login">
     </form>

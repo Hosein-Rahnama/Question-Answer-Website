@@ -1,3 +1,4 @@
+/* Resgiteration and Login Forms */
 .form {
     width: 50%;
     margin: 0em 2em;
@@ -24,18 +25,42 @@
     color: red;
 }
 
+.form ul li textarea {
+    display: block;
+    width: 100%;
+    border-style: hidden;
+    border-radius: 0.5em;
+    padding: 0.75em 1em;
+    resize: none;
+}
+
+.form ul li textarea::placeholder {
+    color: grey;
+    opacity: 0.5;
+}
+
 .form ul li input {
     display: block;
     width: 100%;
-    height: 2.25em;
+    height: 2.25rem;
     border-style: hidden;
-    border-radius: 0.5em;
-    text-indent: 1em;
+    border-radius: 0.5rem;
+    padding: 0rem 1rem;
 }
 
 .form ul li input::placeholder {
     color: grey;
     opacity: 0.5;
+}
+
+.form input[type="password"] {
+    font-size: 0.5rem;
+    letter-spacing: 0.15rem;
+}
+
+.form input[type="password"]::placeholder {
+    font-size: 0.85rem;
+    letter-spacing: normal;
 }
 
 .form input[type="submit"] {
@@ -53,6 +78,11 @@
     color: blue;
     background-color: darkgray;
     cursor: pointer;
+}
+
+#id_image {
+    border-style: hidden;
+    padding: 0;
 }
 
 .form .help-text {
@@ -96,4 +126,16 @@
     line-height: 1.25em;
     font-size: small;
     font-weight: 900;
+}
+
+/* Profile */
+.profile {
+    padding: 0em 2em;
+    margin-bottom: 2em;
+}
+
+.profile img {
+    width: 150px;
+    border-radius: 50%;
+    margin-top: 0.75em;
 }
