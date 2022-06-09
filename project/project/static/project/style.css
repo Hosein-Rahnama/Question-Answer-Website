@@ -1,9 +1,10 @@
 /* CSS Reset */
 * {
-    margin: 0px;
-    padding: 0px;
+    margin: 0rem;
+    padding: 0rem;
     box-sizing: border-box;
 }
+
 
 /* Fonts */
 @font-face {
@@ -16,6 +17,7 @@
     src: url(./fonts/Quicksand-Bold.ttf);
     font-weight: bold;
 }
+
 
 /* General Styles */
 body {
@@ -30,7 +32,7 @@ body {
 
 main {
     background-color: whitesmoke;
-    padding: 2em;
+    padding: 2rem;
 }
 
 a {
@@ -47,11 +49,12 @@ input, textarea {
     font-size: 0.85rem
 }
 
+
 /* Navigation Bar */
 .nav-bar {
     background-color: lightgrey;
     position: sticky;
-    top: 0;
+    top: 0rem;
 }
 
 .nav-bar ul {
@@ -61,7 +64,7 @@ input, textarea {
 
 .nav-bar-left {
     float: left;
-    margin-left: 2em;
+    margin-left: 2rem;
 }
 
 .nav-bar-left li{
@@ -70,19 +73,47 @@ input, textarea {
 
 .nav-bar-right {
     float: right;
-    margin-right: 2em;
+    margin-right: 2rem;
 }
 
 .nav-bar-right li {
     float: right;
 }
 
-.nav-bar-right li a, .nav-bar-left li a {
+.nav-bar-right li a {
     display: block;
     font-weight: bold;
-    padding: 0.5em 0.5em;
+    padding: 0.5rem 0.5rem;
+    margin-left: 0.5rem
+}
+
+.nav-bar-left li a {
+    display: block;
+    font-weight: bold;
+    padding: 0.5rem 0.5rem;
+    margin-right: 0.5rem;
 }
 
 .nav-bar-right li a:hover, .nav-bar-left li a:hover{
     background-color: whitesmoke;
+}
+
+
+/* Utility */
+.button {
+    font-size: 0.8rem;
+    border-style: hidden;
+    border-radius: 0.5rem;
+    color: darkblue;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+.button:hover {
+    color: blue;
+    background-color: gainsboro;
+    cursor: pointer;
 }

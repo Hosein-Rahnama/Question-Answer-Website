@@ -33,7 +33,7 @@ def login(request):
             if 'next' in request.POST:
                 return redirect(request.POST.get('next'))
             else:
-                return redirect('blog:index')
+                return redirect('blog:question-index')
         else:
             messages.error(request, f'Username or Password was invalid.')
     else:

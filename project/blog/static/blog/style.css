@@ -5,59 +5,74 @@
 
 .questions-list {
     list-style-type: none;
-    margin: 0em 2em;
+    margin: 0rem 2rem;
 }
 
 .question-card {
     border-bottom-style: solid;
-    border-bottom-width: 0.1em;
-    padding: 0.5em 1em;
-    margin-bottom: 0.5em;
+    border-bottom-width: 0.1rem;
+    padding: 0.5rem 0rem;
+    margin-bottom: 0.5rem;
 }
 
 .question-title {
-    margin-bottom: 0.8em;
+    margin-bottom: 1rem;
 }
 
 .question-body-preview {
-    line-height: 1.2em;
-    margin-bottom: 1em;
+    line-height: 1.35rem;
+    margin-bottom: 1rem;
     white-space: nowrap; 
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .question-body {
-    margin-bottom: 1em;
-    line-height: 1.5em;
+    margin-bottom: 1rem;
+    line-height: 1.35rem;
 }
 
 .question-info {
-    line-height: 1.3em;
+    line-height: 1rem;
     font-size: small;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
+}
+
+.question-info div:nth-child(2) {
+    display: flex;
+}
+
+.question-info div:nth-child(2) li {
+    margin-left: 0.75rem;
+    font-weight: bold;
 }
 
 .question-author {
     font-weight: bold;
 }
 
+
 /* Answer styles */
 .answers-list {
     list-style-type: none;
-    margin: 0em 2em;
+    margin: 0rem 2rem;
 }
 
 .answer-card {
     background-color: lightyellow;
     border-bottom-style: solid;
-    border-bottom-width: 0.1em;
-    padding: 0.5em 1em;
-    margin-bottom: 0.5em;
+    border-bottom-width: 0.1rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
 }
 
 .answer-body {
-    margin-bottom: 1em;
-    line-height: 1.5em;
+    margin-bottom: 1rem;
+    line-height: 1.35rem;
 }
 
 .answer-author {
@@ -65,11 +80,11 @@
 }
 
 .answers-header {
-    margin-top: 0.5em;
-    padding: 0em 0.7em;
+    margin-top: 0.5rem;
+    padding: 0rem 0.75rem;
 }
 
 .answer-info {
-    line-height: 1.3em;
+    line-height: 1rem;
     font-size: small;
 }

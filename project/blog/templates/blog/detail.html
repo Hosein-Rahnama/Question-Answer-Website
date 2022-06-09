@@ -5,7 +5,18 @@
         <li class="question-card">
             <h2 class="question-title">{{ question.title }}</h2>
             <p class="question-body">{{ question.body }}</p>
-            <p class="question-info">asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</p>
+            <ul class="question-info">
+                <div>
+                    <li>asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</li>
+                    {% if question.updated != question.published %}
+                        <li>updated on {{ question.updated|date:"F d, Y" }} at {{ question.updated|date:"H:i" }}</li>
+                    {% endif %}
+                </div>
+                <div>
+                    <li><a href="{% url 'blog:question-edit' question.id %}">edit</a></li>
+                    <li><a href="{% url 'blog:question-delete' question.id %}">delete</a></li>
+                </div>
+            </ul> 
         </li>
     </ul>
     <ul class="answers-list">

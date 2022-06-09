@@ -12,7 +12,7 @@
     </div>
     <form class="form" action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <h2>Update Your Profile</h2>
+        <h2 class="form-title">Update Your Profile</h2>
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -65,6 +65,8 @@
                 </li>
             {% endif %}
         </ul>
-        <input type="submit" value="Update">
+        <div class="form-buttons">
+            <input class="button" type="submit" value="Update">
+        </div>
     </form>
 {% endblock content %}

@@ -4,7 +4,7 @@
 {% block content %}
     <form class="form" action="{% url 'user:register' %}" method="post">
         {% csrf_token %}
-        <h2>Create an Account</h2>
+        <h2 class="form-title">Create an Account</h2>
         {% if messages %}
             <ul class="messages">
                 {% for message in messages %}
@@ -41,6 +41,8 @@
                 {% endwith %}
             {% endfor %}
         </ul>
-        <input type="submit" value="Sign Up">
+        <div class="form-buttons">
+            <input class="button" type="submit" value="Sign Up">
+        </div>
     </form>
 {% endblock content %}

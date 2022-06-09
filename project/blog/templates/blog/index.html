@@ -6,25 +6,27 @@
             {% for question in questions_list %}
                 {% with answers=question.answer_set.all %}
                     <li class="question-card">
-                        <h2 class="question-title"><a href="{% url 'blog:detail' question.id %}">{{ question.title }}</a></h2>
+                        <h2 class="question-title"><a href="{% url 'blog:question-detail' question.id %}">{{ question.title }}</a></h2>
                         <p class="question-body-preview">{{ question.body }}</p>
-                        <div class="question-info">
-                            <p>asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</p>
-                            <p>
-                                {% if answers.count %}
-                                    has {{ answers.count }} answer{{ answers.count|pluralize }} given by:
-                                    {% for answer in answers %}
-                                        {% if forloop.counter == answers.count %}
-                                            <span class="answer-author">{{ answer.author.username }}</span>
-                                        {% else %}
-                                            <span class="answer-author">{{ answer.author.username }}</span>,
-                                        {% endif %}
-                                    {% endfor %}
-                                {% else %}
-                                    has 0 answers
-                                {% endif %}
-                            </p>
-                        </div>
+                        <ul class="question-info">
+                            <div>
+                                <li>asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</li>
+                                <li>
+                                    {% if answers.count %}
+                                        has {{ answers.count }} answer{{ answers.count|pluralize }} given by:
+                                        {% for answer in answers %}
+                                            {% if forloop.counter == answers.count %}
+                                                <span class="answer-author">{{ answer.author.username }}</span>
+                                            {% else %}
+                                                <span class="answer-author">{{ answer.author.username }}</span>,
+                                            {% endif %}
+                                        {% endfor %}
+                                    {% else %}
+                                        has 0 answers
+                                    {% endif %}
+                                </li>
+                            </div>
+                        </ul>
                     </li>
                 {% endwith %}
             {% endfor %}
