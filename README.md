@@ -21,6 +21,7 @@ This is a sample question and answer website.
 - [x] Create login and logout system.
 - [x] Create and update user profile.
 - [x] Ask, edit and delete questions.
+- [x] Improve profile views and updates.
 - [ ] Add, edit and delete answers.
 - [ ] Add pagination.
 - [ ] Change and reset password.

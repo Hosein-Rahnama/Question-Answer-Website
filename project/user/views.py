@@ -1,9 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
-from django.contrib.auth.decorators import login_required
 from user import models as user_models
+from django.contrib.auth import models as auth_models
 from user.forms import RegisterForm, LoginForm, UserUpdateForm, ProfileUpdateForm
 
 
@@ -51,22 +51,27 @@ def logout(request):
     return render(request, template, context)
 
 
-@login_required(redirect_field_name='next')
-def profile(request):
+def profile(request, user_id):
     if request.method == 'POST':
-        user_update_form = UserUpdateForm(request.POST, instance=request.user)
-        profile_update_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
-        if user_update_form.is_valid() and profile_update_form.is_valid():
-            user_update_form.save()
-            profile_update_form.save()
-            messages.success(request, f'You profile has been updated')
-            return redirect('user:profile')
+        if request.user.id == user_id:
+            user_update_form = UserUpdateForm(request.POST, instance=request.user)
+            profile_update_form = ProfileUpdateForm(request.POST, request.FILES, instance=request.user.profile)
+            if user_update_form.is_valid() and profile_update_form.is_valid():
+                user_update_form.save()
+                profile_update_form.save()
+                messages.success(request, f'Your profile has been updated')
+                return redirect('user:profile', user_id)
+        else:
+            template = 'user/permission-denied.html'
+            return render(request, template)
     else:
-        user_update_form = UserUpdateForm(instance=request.user)
-        if not hasattr(request.user, 'profile'):
-            user_models.Profile.objects.create(user=request.user)
-        profile_update_form = ProfileUpdateForm(instance=request.user.profile)
+        url_user = get_object_or_404(auth_models.User, pk=user_id)
+        user_update_form = UserUpdateForm(instance=url_user)
+        if not hasattr(url_user, 'profile'):
+            user_models.Profile.objects.create(user=url_user)
+        profile_update_form = ProfileUpdateForm(instance=url_user.profile)
     context = {
+        'url_user': url_user,
         'user_update_form': user_update_form,
         'profile_update_form': profile_update_form
     }

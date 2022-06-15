@@ -3,23 +3,32 @@
 
 {% block content %}
     <div class="profile">
-        <h2>{{ user.username }} Profile</h2>
-        <img src="{{ user.profile.image.url }}">
-        {% if user.profile.biography %}
-            <h3>Biography</h3>
-            <p>{{ user.profile.biography }}</p>
+        <div>
+            {% if messages %}
+                <ul class="messages" style="margin-bottom: 1rem;">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <h2>{{ url_user.username }} Profile</h2>
+            <img src="{{ url_user.profile.image.url }}">
+            {% if url_user.profile.biography %}
+                <h3>Biography</h3>
+                <p>{{ url_user.profile.biography }}</p>
+            {% endif %}
+        </div>
+        {% if user.id == url_user.id %}
+            <div class="form" id="show-update-profile-form-button" style="width: inherit; margin: 0rem;">
+                <div class="form-buttons" style="grid-template-columns: 7rem">
+                    <a class="button">Update Profile</a>
+                </div>
+            </div>
         {% endif %}
     </div>
-    <form class="form" action="{% url 'user:profile' %}" method="post" enctype="multipart/form-data">
+    <form class="form" id="update-profile-form" action="{% url 'user:profile' url_user.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="form-title">Update Your Profile</h2>
-        {% if messages %}
-            <ul class="messages">
-                {% for message in messages %}
-                    <li class="{{ message.tags }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
-        {% endif %}
         <ul>
             {% for field in user_update_form %}
                 {% with field=field|label_suffix:'' %}
@@ -67,6 +76,7 @@
         </ul>
         <div class="form-buttons">
             <input class="button" type="submit" value="Update">
+            <a class="button" id="hide-update-profile-form-button">Cancel</a>
         </div>
     </form>
 {% endblock content %}

@@ -7,7 +7,7 @@
             <p class="question-body">{{ question.body }}</p>
             <ul class="question-info">
                 <div>
-                    <li>asked by <span class="question-author">{{ question.author }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</li>
+                    <li>asked by <a href="{% url 'user:profile' question.author.id %}" class="question-author">{{ question.author }}</a> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }}</li>
                     {% if question.updated != question.published %}
                         <li>updated on {{ question.updated|date:"F d, Y" }} at {{ question.updated|date:"H:i" }}</li>
                     {% endif %}
@@ -30,7 +30,7 @@
         {% for answer in answers %}
             <li class="answer-card">
                 <p class="answer-body">{{ answer.body }}</p>
-                <p class="answer-info"> answered by <span class="answer-author">{{ answer.author.username }}</span> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }} </p>
+                <p class="answer-info"> answered by <a href="{% url 'user:profile' answer.author.id %}" class="answer-author">{{ answer.author.username }}</a> on {{ question.published|date:"F d, Y" }} at {{ question.published|date:"H:i" }} </p>
             </li>
         {% endfor %}
     </ul>

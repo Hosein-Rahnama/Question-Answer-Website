@@ -23,9 +23,9 @@
                 <li><a href="#">About Us</a></li>
             </div>
             <div class="nav-bar-right">
-                {% if user.is_authenticated %}
+                {% if request.user.is_authenticated %}
                     <li><a href="{% url 'user:logout' %}">Logout</a></li>
-                    <li><a href="{% url 'user:profile' %}">Profile</a></li>
+                    <li><a href="{% url 'user:profile' request.user.id %}">Profile</a></li>
                     <li><a href="{% url 'blog:question-ask' %}">Ask Question</a></li>            
                 {% else %}
                     <li><a href="{% url 'user:login' %}">Login</a></li>
@@ -38,5 +38,6 @@
         {% block content %}
         {% endblock content %}
     </main>
+    <script src="{% static 'user/profile.js' %}"></script>
 </body>
 </html>
