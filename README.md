@@ -23,8 +23,10 @@ This is a sample question and answer website.
 - [x] Ask, edit and delete questions.
 - [x] Improve profile views and updates.
 - [x] Add, edit and delete answers.
-- [ ] Create utility app.
+- [x] Create utility app and improve permission denied messages.
+- [ ] Improve detail view.
 - [ ] Add pagination.
 - [ ] Change and reset password.
 - [ ] Search question titles.
 - [ ] Vote for questions and answers.
+- [ ] Improve styling.

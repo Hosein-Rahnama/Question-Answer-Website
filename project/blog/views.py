@@ -6,8 +6,9 @@ from blog import models as blog_models
 
 
 def permission_denied(request):
+    context = request.session['permission_denied']
     template = 'blog/permission_denied.html'
-    return render(request, template)
+    return render(request, template, context)
 
 
 def index(request):
@@ -73,6 +74,7 @@ class QuestionEditView(mixins.UserPassesTestMixin, generic.UpdateView):
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
+            self.request.session['permission_denied'] = {'model': 'question', 'operation': 'edit'}
             return redirect('blog:permission-denied')
         else:
             redirect_url = f"{reverse('user:login')}?next={self.request.path}"
@@ -101,6 +103,7 @@ class QuestionDeleteView(mixins.UserPassesTestMixin, generic.DeleteView):
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
+            self.request.session['permission_denied'] = {'model': 'question', 'operation': 'delete'}
             return redirect('blog:permission-denied')
         else:
             redirect_url = f"{reverse('user:login')}?next={self.request.path}"
@@ -157,6 +160,7 @@ class AnswerEditView(mixins.UserPassesTestMixin, generic.UpdateView):
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
+            self.request.session['permission_denied'] = {'model': 'answer', 'operation': 'edit'}
             return redirect('blog:permission-denied')
         else:
             redirect_url = f"{reverse('user:login')}?next={self.request.path}"
@@ -189,22 +193,8 @@ class AnswerDeleteView(mixins.UserPassesTestMixin, generic.DeleteView):
 
     def handle_no_permission(self):
         if self.request.user.is_authenticated:
+            self.request.session['permission_denied'] = {'model': 'answer', 'operation': 'delete'}
             return redirect('blog:permission-denied')
         else:
             redirect_url = f"{reverse('user:login')}?next={self.request.path}"
             return redirect(redirect_url)
-
-
-def color_print(message):
-    class Colors:
-        HEADER = '\033[95m'
-        BLUE = '\033[94m'
-        CYAN = '\033[96m'
-        GREEN = '\033[92m'
-        WARNING = '\033[93m'
-        FAIL = '\033[91m'
-        ENDC = '\033[0m'
-        BOLD = '\033[1m'
-        UNDERLINE = '\033[4m'
-    print(Colors.BLUE + str(message) + Colors.ENDC)
-        

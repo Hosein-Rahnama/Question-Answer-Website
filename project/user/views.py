@@ -62,7 +62,7 @@ def profile(request, user_id):
                 messages.success(request, f'Your profile has been updated')
                 return redirect('user:profile', user_id)
         else:
-            template = 'user/permission-denied.html'
+            template = 'user/permission_denied.html'
             return render(request, template)
     else:
         url_user = get_object_or_404(auth_models.User, pk=user_id)

@@ -15,7 +15,7 @@
             <img src="{{ url_user.profile.image.url }}">
             {% if url_user.profile.biography %}
                 <h3>Biography</h3>
-                <p>{{ url_user.profile.biography }}</p>
+                <p class="biography">{{ url_user.profile.biography }}</p>
             {% endif %}
         </div>
         {% if user.id == url_user.id %}
