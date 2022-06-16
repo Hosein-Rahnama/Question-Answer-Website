@@ -80,11 +80,32 @@
 }
 
 .answers-header {
-    margin-top: 0.5rem;
-    padding: 0rem 0.75rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0rem;
+}
+
+.answers-header div:nth-child(2) a {
+    padding: 0.25rem 0.75rem;
 }
 
 .answer-info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: end;
     line-height: 1rem;
     font-size: small;
+    list-style-type: none;
+}
+
+.answer-info div:nth-child(2) {
+    display: flex;
+}
+
+.answer-info div:nth-child(2) li {
+    margin-left: 0.75rem;
+    font-weight: bold;
 }

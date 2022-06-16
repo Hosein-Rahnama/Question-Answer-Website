@@ -26,7 +26,7 @@
             </div>
         {% endif %}
     </div>
-    <form class="form" id="update-profile-form" action="{% url 'user:profile' url_user.id %}" method="post" enctype="multipart/form-data">
+    <form class="form" style="display: none;" id="update-profile-form" action="{% url 'user:profile' url_user.id %}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <h2 class="form-title">Update Your Profile</h2>
         <ul>
@@ -68,11 +68,6 @@
                     </li>
                 {% endwith %}
             {% endfor %}
-            {% if request.GET.next %}
-                <li>
-                    <input type="hidden" name="next" value="{{ request.GET.next }}">
-                </li>
-            {% endif %}
         </ul>
         <div class="form-buttons">
             <input class="button" type="submit" value="Update">

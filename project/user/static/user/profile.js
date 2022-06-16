@@ -6,14 +6,8 @@ loadEventListeners();
 
 function loadEventListeners()
 {
-    document.addEventListener('DOMContentLoaded', profilePage);
     showUpdateProfileFormButton.addEventListener('click', showUpdateProfileForm);
     hideUpdateProfileFormButton.addEventListener('click', hideUpdateProfileForm);
-}
-
-function profilePage()
-{
-    updateProfileForm.style.display = 'none';
 }
 
 function showUpdateProfileForm()

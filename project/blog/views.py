@@ -32,7 +32,7 @@ def detail(request, question_id):
 
 class QuestionAskView(mixins.LoginRequiredMixin, generic.CreateView):
     model = blog_models.Question
-    template_name = 'blog/ask.html'
+    template_name = 'blog/question_ask.html'
     fields = ['title', 'body']
 
     def get_context_data(self, **kwargs):
@@ -51,7 +51,7 @@ class QuestionAskView(mixins.LoginRequiredMixin, generic.CreateView):
 
 class QuestionEditView(mixins.UserPassesTestMixin, generic.UpdateView):
     model = blog_models.Question
-    template_name = 'blog/edit.html'
+    template_name = 'blog/question_edit.html'
     pk_url_kwarg = 'question_id'
     fields = ['title', 'body']
 
@@ -81,7 +81,7 @@ class QuestionEditView(mixins.UserPassesTestMixin, generic.UpdateView):
 
 class QuestionDeleteView(mixins.UserPassesTestMixin, generic.DeleteView):
     model = blog_models.Question
-    template_name = 'blog/delete.html'
+    template_name = 'blog/question_delete.html'
     pk_url_kwarg = 'question_id'
 
     def get_context_data(self, **kwargs):
@@ -105,3 +105,106 @@ class QuestionDeleteView(mixins.UserPassesTestMixin, generic.DeleteView):
         else:
             redirect_url = f"{reverse('user:login')}?next={self.request.path}"
             return redirect(redirect_url)
+
+    
+class AnswerAddView(mixins.LoginRequiredMixin, generic.CreateView):
+    model = blog_models.Answer
+    template_name = 'blog/answer_add.html'
+    pk_url_kwarg = 'question_id'
+    fields = ['body']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['answer_add_form'] = context.pop('form')
+        question = get_object_or_404(blog_models.Question, pk=self.kwargs.get('question_id'))
+        answers = question.answer_set.order_by('-published').all()
+        context.update({'question': question, 'answers': answers})
+        return context
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        form.instance.question = get_object_or_404(blog_models.Question, pk=self.kwargs.get('question_id'))
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        context = {'question_id': self.kwargs.get('question_id')}
+        return reverse('blog:question-detail', kwargs=context)
+
+
+class AnswerEditView(mixins.UserPassesTestMixin, generic.UpdateView):
+    model = blog_models.Answer
+    template_name = 'blog/answer_edit.html'
+    pk_url_kwarg = 'answer_id'
+    fields = ['body']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['answer_edit_form'] = context.pop('form')
+        question = get_object_or_404(blog_models.Question, pk=self.kwargs.get('question_id'))
+        answers = question.answer_set.order_by('-published').all()
+        context.update({'question': question, 'answers': answers, 'answer_selected': self.get_object()})
+        return context
+
+    def get_success_url(self):
+        context = {'question_id': self.kwargs.get('question_id')}
+        return reverse('blog:question-detail', kwargs=context)
+
+    def test_func(self):
+        answer = self.get_object()
+        if self.request.user == answer.author:
+            return True
+        return False
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            return redirect('blog:permission-denied')
+        else:
+            redirect_url = f"{reverse('user:login')}?next={self.request.path}"
+            return redirect(redirect_url)
+
+
+class AnswerDeleteView(mixins.UserPassesTestMixin, generic.DeleteView):
+    model = blog_models.Answer
+    template_name = 'blog/answer_delete.html'
+    pk_url_kwarg = 'answer_id'
+    fields = ['body']
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['answer_delete_form'] = context.pop('form')
+        question = get_object_or_404(blog_models.Question, pk=self.kwargs.get('question_id'))
+        answers = question.answer_set.order_by('-published').all()
+        context.update({'question': question, 'answers': answers, 'answer_selected': self.get_object()})
+        return context
+    
+    def get_success_url(self):
+        context = {'question_id': self.kwargs.get('question_id')}
+        return reverse('blog:question-detail', kwargs=context)
+
+    def test_func(self):
+        answer = self.get_object()
+        if self.request.user == answer.author:
+            return True
+        return False
+
+    def handle_no_permission(self):
+        if self.request.user.is_authenticated:
+            return redirect('blog:permission-denied')
+        else:
+            redirect_url = f"{reverse('user:login')}?next={self.request.path}"
+            return redirect(redirect_url)
+
+
+def color_print(message):
+    class Colors:
+        HEADER = '\033[95m'
+        BLUE = '\033[94m'
+        CYAN = '\033[96m'
+        GREEN = '\033[92m'
+        WARNING = '\033[93m'
+        FAIL = '\033[91m'
+        ENDC = '\033[0m'
+        BOLD = '\033[1m'
+        UNDERLINE = '\033[4m'
+    print(Colors.BLUE + str(message) + Colors.ENDC)
+        

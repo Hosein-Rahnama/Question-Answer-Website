@@ -22,7 +22,8 @@ This is a sample question and answer website.
 - [x] Create and update user profile.
 - [x] Ask, edit and delete questions.
 - [x] Improve profile views and updates.
-- [ ] Add, edit and delete answers.
+- [x] Add, edit and delete answers.
+- [ ] Create utility app.
 - [ ] Add pagination.
 - [ ] Change and reset password.
 - [ ] Search question titles.
